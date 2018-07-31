@@ -1,6 +1,6 @@
-This project is a basic test for real-time german traffic sign recognition with deeplearning techniques. Use one camera inside the car, it localizes and classifies the traffic sign in real time.
+This project is a basic real-time german traffic sign recognition application with deeplearning techniques. It uses one camera inside the car to localize and classify the traffic sign in real time.
 
-There are not much open training data for german traffic signs. This project uses two small datasets: [GTSDB](http://benchmark.ini.rub.de/?section=gtsdb&subsection=dataset) and [GTSRB](http://benchmark.ini.rub.de/?section=gtsrb&subsection=dataset).
+There are not many open training data for german traffic signs. Datasets used here are: [GTSDB](http://benchmark.ini.rub.de/?section=gtsdb&subsection=dataset) and [GTSRB](http://benchmark.ini.rub.de/?section=gtsrb&subsection=dataset).
 
 # Problems
 
