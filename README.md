@@ -1,11 +1,11 @@
 This project is a basic test for real-time german traffic sign recognition with deeplearning techniques. Use one camera inside the car, it localizes and classifies the traffic sign in real time.
 
-There are not many open training data for german traffic signs. Here two small datasets are used: [GTSDB](http://benchmark.ini.rub.de/?section=gtsdb&subsection=dataset) and [GTSRB](http://benchmark.ini.rub.de/?section=gtsrb&subsection=dataset).
+There are not much open training data for german traffic signs. This project uses two small datasets: [GTSDB](http://benchmark.ini.rub.de/?section=gtsdb&subsection=dataset) and [GTSRB](http://benchmark.ini.rub.de/?section=gtsrb&subsection=dataset).
 
 # Problems
 
 1. Besides the accuracy, as a real-time system the speed of inference is also important. The final goal of this project is to install it on a Raspberry Pi. So the big network architecture like Inception-ResNet and the complex algorithm like Mask R-CNN may not applicable here.
-2. The datasets are quite small for deeplearning. GTSDB only contains 900 images (devided in 600 training images and 300 evaluation images). Although GTSRB has more images (50,000 images in total) but it is only for classification, traffic signs are cropped from background images. It also only contains 43 different traffic signs, common signs like "Haltverbot", "Fußgängerüberweg" and some speed limit signs are missing.
+2. The datasets are quite small for deeplearning. GTSDB only contains 900 images (devided in 600 training images and 300 evaluation images), it is quite hard to train an end-to-end object detection system like SSD or YOLO. Although GTSRB has more images (50,000 images in total), it is only for classification, traffic signs are cropped from background images. It also only contains 43 different traffic signs, common signs like "Haltverbot", "Fußgängerüberweg" and some speed limit signs are missing.
 
 # Solution
 
@@ -15,13 +15,13 @@ Different than standard end-to-end object detection algorithms, in this project 
 For localization U-Net, a convolutional neural network for semantic segmentation, is used. It is popular for biomedical image segmentation. Because biomedical training data are expensive and hard to get, this network works pretty well with little data.
 
 This is my training result:
-TODO:
+![localization](https://raw.githubusercontent.com/helloyide/real-time-German-traffic-sign-recognition/master/img/localization.png)
 
 ## Classification
 For classification a convolutional neural network calls SqueezeNet v1.1 is chosen. SqueezeNet is famous for its small size and still good enough accuracy.
 
 This is my training result:
-TODO:
+![classification](https://raw.githubusercontent.com/helloyide/real-time-German-traffic-sign-recognition/master/img/classification.png)
 
 ## Pipeline
 1. Video frames are retrieved in a worker thread (25fps), they are then sent to the U-Net, traffic sign segmentation are found and bounding boxes are calculated.  
@@ -37,7 +37,7 @@ After the first implementation some issues are found:
 
 To solve these issues, a 10x10 grid is created, frame is then divided into 100 equal areas.
 
-TODO: example
+![grid](https://raw.githubusercontent.com/helloyide/real-time-German-traffic-sign-recognition/master/img/grid.png)
 
 With the help of this grid, some parts of frame are ignored, for example last two rows at the bottom because of the camera position. These areas should not contain traffic signs, it reduces some incorrect bounding boxes.  
 
