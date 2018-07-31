@@ -51,7 +51,8 @@ At the last, too small boxes are ignored. The classifier won't work well in this
 
 # Result
 The video is cut from a driving lesson video [Gerd Moll Onlinefahrlehrer](https://www.youtube.com/user/herrgerdmoll), please ignore the white texts in the video.
-Some traffic sign are classified incorrectly, because GTSRB dataset doesn't contain these signs
+
+Some classification error is caused by the dataset, for example there is no 40 speed limit signs in training data, they are all marked as 60 in this video.
 
 [![Result](https://img.youtube.com/vi/LTip7v4DuuI/0.jpg)](https://youtu.be/LTip7v4DuuI)
 
