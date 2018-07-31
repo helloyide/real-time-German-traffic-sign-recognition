@@ -4,21 +4,21 @@ There are not much open training data for german traffic signs. This project use
 
 # Problems
 
-1. Besides the accuracy, as a real-time system the speed of inference is also important. The final goal of this project is to install it on a Raspberry Pi. So the big network architecture like Inception-ResNet and the complex algorithm like Mask R-CNN may not applicable here.
-2. The datasets are quite small for deeplearning. GTSDB only contains 900 images (devided in 600 training images and 300 evaluation images), it is quite hard to train an end-to-end object detection system like SSD or YOLO. Although GTSRB has more images (50,000 images in total), it is only for classification, traffic signs are cropped from background images. It also only contains 43 different traffic signs, common signs like "Haltverbot", "Fußgängerüberweg" and some speed limit signs are missing.
+1. Besides the accuracy, as a real-time system the speed of inference is also important. The final goal of this project is to install it on a Raspberry Pi. So the big network architecture like [Inception-ResNet](https://arxiv.org/abs/1602.07261) and the complex algorithm like [Mask R-CNN](https://arxiv.org/abs/1703.06870) may not applicable here.
+2. The datasets are quite small for deeplearning. GTSDB only contains 900 images (devided in 600 training images and 300 evaluation images), it is quite hard to train an end-to-end object detection system like [SSD](https://arxiv.org/abs/1512.02325) or [YOLO](https://arxiv.org/abs/1612.08242). Although GTSRB has more images (50,000 images in total), it is only for classification, traffic signs are cropped from background images. It also only contains 43 different traffic signs, common signs like "Haltverbot", "Fußgängerüberweg" and some speed limit signs are missing.
 
 # Solution
 
 Different than standard end-to-end object detection algorithms, in this project a pipeline is built, localization and classification tasks are handled separately.
 
 ## Localization
-For localization U-Net, a convolutional neural network for semantic segmentation, is used. It is popular for biomedical image segmentation. Because biomedical training data are expensive and hard to get, this network works pretty well with little data.
+For localization [U-Net](https://arxiv.org/abs/1505.04597), a convolutional neural network for semantic segmentation, is used. It is popular for biomedical image segmentation. Because biomedical training data are expensive and hard to get, this network works pretty well with little data.
 
 This is my training result:
 ![localization](https://raw.githubusercontent.com/helloyide/real-time-German-traffic-sign-recognition/master/img/localization.png)
 
 ## Classification
-For classification a convolutional neural network calls SqueezeNet v1.1 is chosen. SqueezeNet is famous for its small size and still good enough accuracy.
+For classification a convolutional neural network calls [SqueezeNet](https://arxiv.org/abs/1602.07360) is chosen. It is famous for its small size and still good enough accuracy.
 
 This is my training result:
 ![classification](https://raw.githubusercontent.com/helloyide/real-time-German-traffic-sign-recognition/master/img/classification.png)
@@ -50,7 +50,7 @@ Also the grid is divided equally, a perspective grid system might be better.
 At the last, too small boxes are ignored. The classifier won't work well in this case.
 
 # Result
-The video is cut from a driving lesson video (URL), please ignore the white texts in the video.
+The video is cut from a driving lesson video [Gerd Moll Onlinefahrlehrer](https://www.youtube.com/user/herrgerdmoll), please ignore the white texts in the video.
 Some traffic sign are classified incorrectly, because GTSRB dataset doesn't contain these signs
 
 TOOD: video
