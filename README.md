@@ -58,6 +58,6 @@ TOOD: video
 # Possible improvement
 * There are many different speed limit signs, besides including all of them into training data, a number recognizer could also be added in the pipeline. A small convolutional neural network works already pretty good for MNIST hand writing number recognition, the numbers on traffic signs are more formal, it should be easy to build such recognizer without introduce much time during inference. 
 * The accuracy of localization network could be improved. There is an alteration of the original U-Net design, which adds dropout layers and batch normalization. Also can try to train with other traffic sign datasets, although they are not for german traffic signs, for localization task it could be helpful.
-* With additional information like the distance of the object we may distinguish them better. Like this example, if we know it's far away, we wont handle it as a traffic sign: TODO
+* With additional information like the distance of the object we may distinguish them better.
 * As mentioned before, grid could be perspective and the number of frame could be dynamic.
 * In general camera does not work well in bad wetter condition and light condition.
