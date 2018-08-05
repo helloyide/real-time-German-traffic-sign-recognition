@@ -289,7 +289,7 @@ def draw_grid(img, line_color=(0, 255, 0), thickness=1):
 
 def test_with_video():
     # the size must be same as input video
-    video_out = cv2.VideoWriter('output_thread.avi',
+    video_out = cv2.VideoWriter('testvideo/output.avi',
                                 cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'),
                                 25,  # output video fps
                                 image_WH)
